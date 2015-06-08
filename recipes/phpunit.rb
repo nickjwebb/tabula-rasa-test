@@ -4,6 +4,12 @@
 #
 #
 # Install phpunit via phar
+#
+
+# Back out gem version / test install
+execute "fix_gem_binary" do
+         command "mv /usr/local/bin/gem /usr/local/bin/gem.old && ln -s /opt/aws/opsworks/local/bin/gem /usr/local/bin/gem"
+end
 
 # Make sure php installed, use latest stable, 5.6
 %w{php56}.each do |pkg|
