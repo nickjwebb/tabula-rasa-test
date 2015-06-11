@@ -11,19 +11,6 @@ execute "fix_gem_binary" do
          command "mv /usr/local/bin/gem /usr/local/bin/gem.old && ln -s /opt/aws/opsworks/local/bin/gem /usr/local/bin/gem"
 end
 
-# Make sure php installed, use latest stable, 5.6
-%w{php56}.each do |pkg|
-  package pkg do
-    action :upgrade
-  end
-end
-
-# Confirm php support for Phar, good bet...
-log '[phpunit] phar (PHP archive) not supported' do
-  level :warn
-  not_if "php -m | grep 'Phar'"
-end
-
 # Grab phpunit phar file from s3, and link it to /usr/local/bin/phpunit
 for phar in [ "#{node['phpunit']['basename']}#{node['phpunit']['version']}#{node['phpunit']['extensionname']}" ] do
   # Download
