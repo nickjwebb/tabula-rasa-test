@@ -6,11 +6,6 @@
 # Install phpunit via phar
 #
 
-# Back out gem version / test install
-execute "fix_gem_binary" do
-         command "mv /usr/local/bin/gem /usr/local/bin/gem.old && ln -s /opt/aws/opsworks/local/bin/gem /usr/local/bin/gem"
-end
-
 # Grab phpunit phar file from s3, and link it to /usr/local/bin/phpunit
 for phar in [ "#{node['phpunit']['basename']}#{node['phpunit']['version']}#{node['phpunit']['extensionname']}" ] do
   # Download
