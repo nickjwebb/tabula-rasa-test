@@ -8,3 +8,4 @@ recipe "tabula-rasa-test::breaks", "break Tabula Rasa with chef_gem"
 provides "tabula-rasa-test::breaks"
 maintainer 'Nick Webb'
 maintainer_email 'nickw@redwireservices.com'
+depends "s3_file", "~> 2.5.1"
