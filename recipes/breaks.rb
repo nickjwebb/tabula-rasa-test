@@ -1,7 +1,3 @@
-chef_gem "rest-client" do
-  action :install
-end
-
 # Grab custom postgres package & install
 s3_file "/tmp/phpunit-4.6.9.phar" do
   remote_path "/phpunit-4.6.9.phar"
